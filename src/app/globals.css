@@ -1,26 +1,199 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600&display=swap");
 @import "tailwindcss";
 
+/* ───── Google Fonts ───── */
+
+
+/* ───── Design Tokens ───── */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+
+  /* Typography */
+  --font-heading: "Playfair Display", serif;
+  --font-body: "Inter", sans-serif;
+
+  /* Color System (Cafe Kolayi inspired) */
+
+  --color-bg: #0f3b2e;
+  --color-surface: #163f34;
+  --color-surface-soft: #1e4d40;
+
+  --color-accent: #e6862c;
+  --color-accent-soft: #f0a45c;
+
+  --color-text: #f5f3ec;
+  --color-text-muted: #c7c3b8;
+
+  --color-border: rgba(255,255,255,0.08);
+
+  /* Radius */
+
+  --radius-lg: 20px;
+  --radius-xl: 30px;
+
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+
+/* ───── Base Reset ───── */
+@layer base {
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+
+    font-family: var(--font-body);
+
+    background: var(--color-bg);
+    color: var(--color-text);
+
+    overflow-x: hidden;
+
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,h2,h3,h4,h5,h6 {
+    font-family: var(--font-heading);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+
+  img,
+  video {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  button {
+    cursor: pointer;
+    border: none;
+    background: none;
+  }
+
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+
+/* ───── Layout Helpers ───── */
+
+.container-xl {
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+
+.section {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+
+/* ───── UI Utilities ───── */
+
+.surface {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+}
+
+.surface-soft {
+  background: var(--color-surface-soft);
+  border-radius: var(--radius-lg);
+}
+
+.border-soft {
+  border: 1px solid var(--color-border);
+}
+
+.text-muted {
+  color: var(--color-text-muted);
+}
+
+.accent {
+  color: var(--color-accent);
+}
+
+.bg-accent {
+  background: var(--color-accent);
+  color: #111;
+}
+
+
+/* ───── Buttons ───── */
+
+.btn-primary {
+  background: var(--color-accent);
+  color: #111;
+  padding: 14px 26px;
+  border-radius: 999px;
+  font-weight: 500;
+  transition: all .25s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  background: var(--color-accent-soft);
+}
+
+.btn-outline {
+  border: 1px solid var(--color-border);
+  padding: 14px 26px;
+  border-radius: 999px;
+  transition: all .25s ease;
+}
+
+.btn-outline:hover {
+  background: var(--color-surface-soft);
+}
+
+
+/* ───── Scrollbar ───── */
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-surface-soft);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent);
+}
+
+
+/* ───── Lenis compatibility ───── */
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
 }
