@@ -16,7 +16,7 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Kolayi | Advanced Cafe Culture",
+  title: "Cafe Kolayi",
   description: "A premium modern cafe blending minimalistic design, precision roasting, and exceptional taste.",
 };
 
